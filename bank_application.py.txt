@@ -1,0 +1,72 @@
+class SBI_Bank():
+    branch_loc = 'Marathahalli'
+    IFSC_code  = 'SBIN000420'
+    ROI        = 0.07
+    def __init__(self, name, Aadhar, Acc_No, Bal, Pin):
+        self.name   = name
+        self.Aadhar = Aadhar
+        self.Acc_No = Acc_No
+        self.Bal    = Bal
+        self.Pin    = Pin
+    @classmethod
+    def Change_loc(cls):
+        cls.branch_loc = 'USA'
+    @staticmethod
+    def Get_Password():
+        pwd = int(input('enter 4 digit pin='))
+        return pwd
+    def Check_Bal(self):
+        count = 3
+        while count>0:
+            print(f'Attempts left {count}')
+            if self.Get_Password() == self.Pin:
+                print(f'Available Bal is {self.Bal}')
+                break
+            else:
+                print('Incorrect pin...')
+                count -=1
+        else:
+            print('No attempts left')
+            print('Try after 24 hours')
+    def with_Drawn(self):
+        amount = int(input('enter the amount ='))
+        count =3
+        while count>0:
+            print(f'Attempts left {count}')
+            if 100<=amount<=20000 and amount%100==0:
+                if self.Bal >= amount:
+                    self.Bal -=amount
+                    print('Amount got successfully')
+                    print(f'Available bal is {self.Bal}')
+                    break
+                else:
+                    print('Insufficient Bal')
+                    count -=1
+            else:
+                print('Invalid number')
+        else:
+            print('No attempt left')
+            print('Try after 24 hours')
+    def Deposite(self):
+        data = int(input('enter account number= '))
+        count =3
+        while count>0:
+            print(f'Attempts left {count}')
+            if self.Acc_No ==data:
+                amount =int(input('enter the amount= '))
+                if 500<=amount<=20000 and amount%100==0:
+                    self.Bal +=amount
+                    print('Amount credited successfully')
+                else:
+                    print('Invalid Amount')
+            else:
+                print('Invalid')
+        else:
+            print('No attempts left')
+            print('Try after 24 hours')
+cust1=SBI_Bank('jaggu', 123489358794879, 127384759, 500000, 2222)
+cust2=SBI_Bank('mohan', 184748714176746, 784875738, 400000, 3333)
+cust3=SBI_Bank('abi', 89711489787417, 8794174878, 10000000, 1125)
+cust1.Check_Bal()
+cust2.with_Drawn()
+                  
