@@ -1,3 +1,7 @@
+
+#SingleTon decorator class
+
+
 def SingleTon(arg):
     L=[]
     def Inner():
