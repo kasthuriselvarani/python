@@ -1,0 +1,70 @@
+def SingleTon(arg):
+    L=[]
+    def Inner():
+        if len(L)==0:
+            obj=arg()
+            L.append(obj)
+        return L[0]
+    return Inner
+@SingleTon      #sigleton(movie1)
+class Movie1():
+    def __init__(self):
+        self.tic=100
+    def Booking(self):
+        reqtic=int(input('Enter the number of ticket= '))
+        if reqtic>0 and reqtic<=10:
+            if reqtic<=self.tic:
+                self.tic -=reqtic
+                print('Booking done')
+                print('Available tickets=',self.tic)
+            else:
+                print('Booking closed')
+        else:
+            print('Invalid ticket')
+            
+class Movie2():
+    def __init__(self):
+        self.tic=150
+    def Booking(self):
+        reqtic=int(input('Enter the number of ticket= '))
+        if reqtic>0 and reqtic<=10:
+            if reqtic<=self.tic:
+                self.tic -=reqtic
+                print('Booking done')
+                print('Available tickets=',self.tic)
+            else:
+                print('Booking closed')
+        else:
+            print('Invalid ticket')
+
+class Movie3():
+    def __init__(self):
+        self.tic=200
+    def Booking(self):
+        reqtic=int(input('Enter the number of ticket= '))
+        if reqtic>0 and reqtic<=10:
+            if reqtic<=self.tic:
+                self.tic -=reqtic
+                print('Booking done')
+                print('Available tickets=',self.tic)
+            else:
+                print('Booking closed')
+        else:
+            print('Invalid ticket')
+def BMyS():
+    print('1)Movie1 \n2)Movie2 \n3)Movie3')
+    choice = int(input('Enter your choice= '))
+    if choice == 1:
+        cust=Movie1()
+        cust.Booking()
+    elif choice==2:
+        cust=Movie2()
+        cust.Booking()
+    elif choice==3:
+        cust=Movie3()
+        cust.Booking()
+    else:
+        print('Invalid option')
+cust1 = BMyS()
+cust2 = BMyS()
+cust3 = BmyS()
